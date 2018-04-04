@@ -55,7 +55,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
-			<!-- tag::plugin[] -->
+			<!-- tag::plugin[]
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>dockerfile-maven-plugin</artifactId>
@@ -67,24 +67,7 @@
 					</buildArgs>
 				</configuration>
 			</plugin>
-			<!-- end::plugin[] -->
-
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>1.5.2.RELEASE</version>
-                <configuration>
-                    <mainClass>com.mvc.springbootjenkinspipeline.resources.IndexController</mainClass>
-                    <addResources>true</addResources>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+			end::plugin[] -->
 
 		</plugins>
 	</build>
