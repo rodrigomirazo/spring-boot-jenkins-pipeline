@@ -1,9 +1,17 @@
-# spring-boot-jenkins-pipeline
-Basic Spring project, using docker plugin for continuous integration with docker
+# Kanp
 
-#### Build using
+#### Build using `dev Environment`
 
-    mvn clean package
+    mvn clean package -P dev
+
+#### Build using `uat Environment`
+
+    mvn clean package -P uat
+
+#### Build using `Prod Environment`
+
+    mvn clean package -P prod
+
 
 #### Run this project using
 

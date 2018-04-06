@@ -1,12 +1,12 @@
-package com.mvc.springbootjenkinspipeline;
+package com.mvc.boot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootJenkinsPipelineApplication {
+public class Boot {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootJenkinsPipelineApplication.class, args);
+		SpringApplication.run(Boot.class, args);
 	}
 }
