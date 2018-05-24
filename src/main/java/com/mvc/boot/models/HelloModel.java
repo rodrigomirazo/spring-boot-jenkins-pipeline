@@ -1,6 +1,9 @@
 package com.mvc.boot.models;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+
 import java.util.Date;
 
 @Entity
@@ -8,7 +11,6 @@ import java.util.Date;
 public class HelloModel {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
     String greeting;
