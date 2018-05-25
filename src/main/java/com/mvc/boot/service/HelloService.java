@@ -33,14 +33,4 @@ public class HelloService {
         return helloModel;
     }
 
-    @Autowired
-    public HelloModel save(HelloModel helloModel) {
-        return helloRepository.save(helloModel);
-    }
-
-    @Autowired
-    public List<HelloModel> list(HelloModel helloModel) {
-        return Lists.newArrayList(helloRepository.findAll());
-    }
-
 }
