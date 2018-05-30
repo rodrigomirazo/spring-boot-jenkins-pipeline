@@ -126,7 +126,7 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <phase>none</phase>
+                        <phase>process-resources</phase>
                         <goals>
                             <goal>update</goal>
                         </goals>
