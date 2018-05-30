@@ -6,7 +6,7 @@ spring:
             ddl-auto: validate
 
     datasource:
-        url: jdbc:mysql://172.30.3.177:3306/HELLO_DB
+        url: jdbc:mysql://jdbc:mysql:3306/HELLO_DB
         username: root
         password: root
         driver-class-name: com.mysql.jdbc.Driver

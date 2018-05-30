@@ -2,18 +2,6 @@ version: '2.2'
 
 services:
 
-  nginx:
-   container_name: hello-sprng-nginx
-   image: nginx:1.13
-   restart: always
-   ports:
-   - 81:81
-   - 443:443
-   volumes:
-   - ./nginx/conf.d:/etc/nginx/conf.d
-   depends_on:
-   - mysql
-
   mysql:
    container_name: hello-sprng-mysql
    image: mysql/mysql-server:5.7
@@ -26,6 +14,8 @@ services:
    restart: always
 
   springBootHello:
+    depends_on:
+      - mysql
     container_name: hello-sprng-microservice
     image: hello-sprng-boot/1.0.0
     restart: always
@@ -36,9 +26,26 @@ services:
       context: ./
       dockerfile: Dockerfile_pullGit
       args:
-          - url=https://github.com/rodrigomirazo/spring-boot-jenkins-pipeline.git#docker-compose
           - project=spring-boot-jenkins-pipeline
           - artifactid=spring-boot-jenkins-pipeline
           - version=0.0.1-SNAPSHOT
-    depends_on:
-      - mysql
+    networks:
+    - sprng_mysql_net
+
+  nginx:
+   depends_on:
+   - springBootHello
+   container_name: hello-sprng-nginx
+   image: nginx:1.13
+   restart: always
+   ports:
+   - 81:81
+   - 443:443
+   volumes:
+   - ./nginx/conf.d:/etc/nginx/conf.d
+   networks:
+   - sprng_mysql_net
+
+networks:
+  sprng_mysql_net:
+    driver: bridge
