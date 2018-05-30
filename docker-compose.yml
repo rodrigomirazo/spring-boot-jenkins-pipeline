@@ -3,48 +3,56 @@ version: '2.2'
 services:
 
   mysql:
-   container_name: hello-sprng-mysql
-   image: mysql/mysql-server:5.7
-   environment:
-    MYSQL_DATABASE: HELLO_DB
-    MYSQL_ROOT_PASSWORD: root
-    MYSQL_ROOT_HOST: '%'
-   ports:
-   - "3306:3306"
-   restart: always
+    container_name: hello-sprng-mysql
+    image: mysql/mysql-server:5.7
+    environment:
+      MYSQL_DATABASE: HELLO_DB
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+    ports:
+    - "3306:3306"
+    restart: always
+    networks:
+    - sprng_mysql_net
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=root --execute \"SHOW DATABASES;\""
+      timeout: 20s
+      retries: 10
 
   springBootHello:
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     container_name: hello-sprng-microservice
     image: hello-sprng-boot/1.0.0
     restart: always
     working_dir: /.
     expose:
-      - "8082"
+    - "8082"
     build:
       context: ./
       dockerfile: Dockerfile_pullGit
       args:
-          - project=spring-boot-jenkins-pipeline
-          - artifactid=spring-boot-jenkins-pipeline
-          - version=0.0.1-SNAPSHOT
+      - project=spring-boot-jenkins-pipeline
+      - artifactid=spring-boot-jenkins-pipeline
+      - version=0.0.1-SNAPSHOT
     networks:
     - sprng_mysql_net
 
   nginx:
-   depends_on:
-   - springBootHello
-   container_name: hello-sprng-nginx
-   image: nginx:1.13
-   restart: always
-   ports:
-   - 81:81
-   - 443:443
-   volumes:
-   - ./nginx/conf.d:/etc/nginx/conf.d
-   networks:
-   - sprng_mysql_net
+    depends_on:
+      springBootHello:
+        condition: service_healthy
+    container_name: hello-sprng-nginx
+    image: nginx:1.13
+    restart: always
+    ports:
+    - 81:81
+    - 443:443
+    volumes:
+    - ./nginx/conf.d:/etc/nginx/conf.d
+    networks:
+    - sprng_mysql_net
 
 networks:
   sprng_mysql_net:
