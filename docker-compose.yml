@@ -32,7 +32,6 @@ services:
     working_dir: /.
     expose:
       - "8082"
-    command: mvn liquibase:update
     build:
       context: ./
       dockerfile: Dockerfile_pullGit
