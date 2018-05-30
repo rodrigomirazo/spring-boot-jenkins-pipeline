@@ -1,13 +1,12 @@
 FROM alpine/git as clone
 ARG url
 WORKDIR /app
-RUN git clone https://github.com/rodrigomirazo/spring-boot-jenkins-pipeline.git#docker-compose
-
+RUN git clone https://github.com/rodrigomirazo/spring-boot-jenkins-pipeline.git -b docker-compose --single-branch
 FROM maven:3.5-jdk-8-alpine as build
 ARG project
 WORKDIR /app
 COPY --from=clone /app/${project} /app
-RUN mvn install
+RUN mvn clean package
 
 FROM openjdk:8-jre-alpine
 ARG artifactid
