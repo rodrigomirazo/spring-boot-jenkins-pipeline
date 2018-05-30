@@ -35,8 +35,12 @@ services:
     command: mvn liquibase:update
     build:
       context: ./
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile_pullGit
       args:
           - JAR_FILE=target/spring-boot-jenkins-pipeline-0.0.1-SNAPSHOT.jar
+          - url=https://github.com/rodrigomirazo/spring-boot-jenkins-pipeline.git#docker-compose
+          - project=spring-boot-jenkins-pipeline
+          - artifactid=spring-boot-jenkins-pipeline
+          - version=0.0.1-SNAPSHOT
     depends_on:
       - mysql
