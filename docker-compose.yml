@@ -3,7 +3,7 @@ version: '2.2'
 services:
 
   nginx:
-   container_name: some-nginx
+   container_name: hello-sprng-nginx
    image: nginx:1.13
    restart: always
    ports:
@@ -15,7 +15,7 @@ services:
    - mysql
 
   mysql:
-   container_name: hello-sprng-boot-mysql
+   container_name: hello-sprng-mysql
    image: mysql/mysql-server:5.7
    environment:
     MYSQL_DATABASE: HELLO_DB
@@ -26,7 +26,7 @@ services:
    restart: always
 
   springBootHello:
-    container_name: hello-sprn-boot-microservice
+    container_name: hello-sprng-microservice
     image: hello-sprng-boot/1.0.0
     restart: always
     working_dir: /.
@@ -36,7 +36,6 @@ services:
       context: ./
       dockerfile: Dockerfile_pullGit
       args:
-          - JAR_FILE=target/spring-boot-jenkins-pipeline-0.0.1-SNAPSHOT.jar
           - url=https://github.com/rodrigomirazo/spring-boot-jenkins-pipeline.git#docker-compose
           - project=spring-boot-jenkins-pipeline
           - artifactid=spring-boot-jenkins-pipeline
