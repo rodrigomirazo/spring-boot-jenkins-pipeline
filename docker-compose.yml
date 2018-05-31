@@ -41,8 +41,7 @@ services:
 
   nginx:
     depends_on:
-      springBootHello:
-        condition: service_healthy
+    - springBootHello
     container_name: hello-sprng-nginx
     image: nginx:1.13
     restart: always
