@@ -6,7 +6,7 @@ services:
     container_name: hello-sprng-mysql
     image: mysql/mysql-server:5.7
     environment:
-      MYSQL_DATABASE: HELLO_DB
+      MYSQL_DATABASE: HELLO_DB_COMPOSE
       MYSQL_ROOT_PASSWORD: root
       MYSQL_ROOT_HOST: '%'
     ports:
@@ -15,9 +15,9 @@ services:
     networks:
     - sprng_mysql_net
     healthcheck:
-      test: "/usr/bin/mysql --user=root --password=root --execute \"SHOW DATABASES;\""
-      timeout: 20s
-      retries: 10
+      test: "/etc/init.d/mysql status"
+      interval: 1s
+      retries: 120
 
   springBootHello:
     depends_on:
@@ -41,7 +41,8 @@ services:
 
   nginx:
     depends_on:
-    - springBootHello
+      mysql:
+        condition: service_healthy
     container_name: hello-sprng-nginx
     image: nginx:1.13
     restart: always
