@@ -14,9 +14,6 @@ services:
     depends_on:
       - springBootHello
     restart: always
-    build:
-      context: ./
-      dockerfile: Dockerfile_mysql_Test
     networks:
     - sprng_mysql_net
     healthcheck:
@@ -41,20 +38,20 @@ services:
     networks:
     - sprng_mysql_net
 
-#  nginx:
-#    depends_on:
-#      mysql:
-#        condition: service_healthy
-#    container_name: hello-sprng-nginx
-#    image: nginx:1.13
-#    restart: always
-#    ports:
-#    - 81:81
-#    - 443:443
-#    volumes:
-#    - ./nginx/conf.d:/etc/nginx/conf.d
-#    networks:
-#    - sprng_mysql_net
+  nginx:
+    depends_on:
+      mysql:
+        condition: service_healthy
+    container_name: hello-sprng-nginx
+    image: nginx:1.13
+    restart: always
+    ports:
+    - 81:81
+    - 443:443
+    volumes:
+    - ./nginx/conf.d:/etc/nginx/conf.d
+    networks:
+    - sprng_mysql_net
 
 networks:
   sprng_mysql_net:
