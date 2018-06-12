@@ -5,9 +5,9 @@ pipeline {
         maven 'maven3'
     }
     stages {
-        stage('Package') {
+        stage('Install') {
             steps {
-                sh "echo 'hola'"
+                sh "mvn clean"
             }
         }
     }

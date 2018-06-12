@@ -23,7 +23,7 @@ This is a Fully functional project for a java Microservice.
         Open terminal and step into C:\...\your_project
     </li>
     <li>
-        docker run -p 8080:8080  -v `pwd`/downloads:/var/jenkins_home/downloads -v `pwd`/jobs:/var/jenkins_home/jobs/ --rm --name myjenkins myjenkins:latest
+        docker run -p 8086:8080  -v `pwd`/downloads:/var/jenkins_home/downloads -v `pwd`/jobs:/var/jenkins_home/jobs/ --rm --name myjenkins myjenkins:latest
     </li>
     <li>
 
