@@ -8,6 +8,7 @@ pipeline {
         stage('Install') {
             steps {
                 echo 'Building..'
+                bat "echo 'im batman'"
             }
         }
     }
