@@ -9,6 +9,10 @@ pipeline {
             steps {
                 echo 'Building..'
                 bat "mvn clean package"
+                docker-compose up --build
+            }
+            post {
+
             }
         }
     }

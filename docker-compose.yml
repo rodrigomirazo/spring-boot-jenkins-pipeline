@@ -30,11 +30,9 @@ services:
       - mysql
     build:
       context: ./
-      dockerfile: Dockerfile_pullGit
+      dockerfile: Dockerfile_basic
       args:
-      - project=spring-boot-jenkins-pipeline
-      - artifactid=spring-boot-jenkins-pipeline
-      - version=0.0.1-SNAPSHOT
+      - project=target/spring-boot-jenkins-pipeline-0.0.1-SNAPSHOT.jar
     networks:
     - sprng_mysql_net
 
