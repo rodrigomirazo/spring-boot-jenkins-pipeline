@@ -8,7 +8,7 @@ pipeline {
         stage('Install') {
             steps {
                 echo 'Building..'
-                bat "echo 'im batman'"
+                bat "mvn clean package"
             }
         }
     }
