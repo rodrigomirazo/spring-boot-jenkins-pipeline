@@ -1,30 +1,31 @@
-# Kanp
+# Spring Boot Docker
 
-#### Build using `dev Environment`
+### What can be found here?
 
-    mvn clean package -P dev
+This is a Fully functional project for a java Microservice.
 
-#### Build using `uat Environment`
+#### Before begin
+<p>Make sure you have previously install Docker.</p>
+<p>if Not, please install docker from the using this link.</p>
 
-    mvn clean package -P uat
+#### Elements
 
-#### Build using `Prod Environment`
+<ul>
+    <li>Spring Boot Microservice</li>
+    <li>Mysql Database</li>
+    <li>Nginx API Gateway functionality</li>
+</ul>
 
-    mvn clean package -P prod
+### Build `Docker Compose commands`
 
+<ol>
+    <li>
+        Open terminal and step into C:\...\your_project
+    </li>
+    <li>
+        docker run -p 8080:8080  -v `pwd`/downloads:/var/jenkins_home/downloads -v `pwd`/jobs:/var/jenkins_home/jobs/ --rm --name myjenkins myjenkins:latest
+    </li>
+    <li>
 
-#### Run this project using
-
-    java -jar target/spring-boot-jenkins-pipeline-0.0.1-SNAPSHOT.jar
-
-## Docker `Containerized Application`
-
-### Publish the image `Locally`
-
-    mvn install dockerfile:build
-    
-### Execute Container
-    
-    docker run -p 8091:8091 -t springio/spring-boot-jenkins-pipeline
-    
-    
+    </li>
+</ol>

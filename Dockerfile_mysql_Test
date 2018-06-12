@@ -1,5 +1,0 @@
-#!/bin/bash
-from mysql:5.7 as msyql
-WORKDIR /app
-COPY --from=msyql /app/src/main/resources/createHelloTable.sql /app
-RUN mysql -u root HELLO_DB_COMPOSE < /app/createHelloTable.sql
