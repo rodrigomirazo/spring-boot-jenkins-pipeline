@@ -11,9 +11,6 @@ pipeline {
                 bat "mvn clean package"
                 bat "docker-compose up --build"
             }
-            post {
-
-            }
         }
     }
 }
