@@ -9,7 +9,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 bat "mvn clean package"
-                bat "docker-compose up --build"
+                bat "docker-compose up -d --build"
             }
         }
     }
