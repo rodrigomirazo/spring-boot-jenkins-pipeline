@@ -1,30 +1,25 @@
-# Kanp
+# Spring-boot `Dockerfile`
 
 #### Build using `dev Environment`
 
-    mvn clean package -P dev
-
-#### Build using `uat Environment`
-
-    mvn clean package -P uat
-
-#### Build using `Prod Environment`
-
-    mvn clean package -P prod
-
-
-#### Run this project using
-
-    java -jar target/spring-boot-jenkins-pipeline-0.0.1-SNAPSHOT.jar
+    mvn clean package
 
 ## Docker `Containerized Application`
 
 ### Publish the image `Locally`
 
-    mvn install dockerfile:build
+    docker build -t spring-boot-dockerfile:latest .
     
 ### Execute Container
     
-    docker run -p 8091:8091 -t springio/spring-boot-jenkins-pipeline
+    docker run -it --name dockerfile-spring-container -p 8082:8082 spring-boot-dockerfile:latest
     
+### See the result at:
+
+`http://localhost:8082/greeting/hello`
+
+### stop/start container
     
+    docker stop dockerfile-spring-container
+    Docker start dockerfile-spring-container /bin/bash
+
